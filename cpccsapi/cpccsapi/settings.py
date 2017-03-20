@@ -80,6 +80,9 @@ WSGI_APPLICATION = 'cpccsapi.wsgi.application'
 DATABASES = {
     'default': { 
         'ENGINE': 'django.db.backends.postgresql', 
+		'OPTIONS' : {
+                'options': '-c search_path=cpccs,public'
+         },
         # Replace games with your desired database name 
         'NAME': 'omkbmadd',
         # Replace username with your desired user name 

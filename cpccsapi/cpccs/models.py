@@ -8,7 +8,7 @@ class Sector(models.Model):
     mensaje = models.CharField(max_length=255)
 	
     class Meta:
-        db_table = "'cpccs'.'usuario'"
+        db_table = 'sector'
         ordering = ('nombre',) 
  
     def __str__(self): 
