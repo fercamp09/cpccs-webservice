@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+sx1%al*!4@^f6pbeo_a1ygw@zl9m3ui*8kd=_b9orfgk0s8)f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+	'.6v3gjmadmw.sa-east-1.elasticbeanstalk.com',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/css/bootstrap.min.css ',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/css/bootstrap-tweaks.css',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/css/prettify.css',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/css/default.css',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/jquery-1.12.4.min.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/csrf.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/bootstrap.min.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/prettify-min.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/default.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/ajax-form.js'
+]
 
 
 # Application definition
@@ -118,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.10/topics/i18n/
+# https://docs.djangoproject.com/en/1.10/topicomcs/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -132,6 +134,6 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-
+# https://docs.djangoproject./en/1.10/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
