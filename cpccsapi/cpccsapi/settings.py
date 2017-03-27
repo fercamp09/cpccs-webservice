@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+sx1%al*!4@^f6pbeo_a1ygw@zl9m3ui*8kd=_b9orfgk0s8)f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-	'.6v3gjmadmw.sa-east-1.elasticbeanstalk.com',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/css/bootstrap.min.css ',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/css/bootstrap-tweaks.css',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/css/prettify.css',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/css/default.css',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/jquery-1.12.4.min.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/csrf.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/bootstrap.min.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/prettify-min.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/default.js',	'custom-env.6v3gjmadmw.sa-east-1.elasticbeanstalk.com/static/rest_framework/js/ajax-form.js'
+	
 ]
 
 
@@ -42,7 +42,9 @@ INSTALLED_APPS = [
 	# Django REST Framework 
     'rest_framework', 
     # CPCCS application 
-    'cpccs.apps.CpccsConfig',
+    'cpccs.apps.CpccsConfig',  
+    # Crispy forms 
+    'crispy_forms', 
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,18 @@ USE_TZ = True
 # https://docs.djangoproject./en/1.10/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = { 
+    'DEFAULT_PAGINATION_CLASS': 
+    'cpccs.pagination.LimitOffsetPaginationWithMaxLimit', 
+    'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': ( 
+        'rest_framework.filters.DjangoFilterBackend', 
+        'rest_framework.filters.SearchFilter', 
+        'rest_framework.filters.OrderingFilter', 
+        ),
+    'DEFAULT_AUTHENTICATION_CLASSES': ( 
+        'rest_framework.authentication.BasicAuthentication', 
+        'rest_framework.authentication.SessionAuthentication', 
+        ) 		
+} 
