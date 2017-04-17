@@ -16,7 +16,7 @@ class Sector(models.Model):
 
 class EstadoCivil(models.Model): 
     nombre = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     
     class Meta:
         db_table = 'estadocivil'
@@ -32,7 +32,7 @@ class Institucion(models.Model):
     nombre = models.CharField(max_length=255) 
     representante = models.CharField(max_length=255) 
     competencia = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     sector = models.ForeignKey( 
         Sector,
         db_column='sectorid',
@@ -47,7 +47,7 @@ class Institucion(models.Model):
 
 class Nacionalidad(models.Model): 
     nombre = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     
     class Meta:
         db_table = 'nacionalidad'
@@ -59,7 +59,7 @@ class Nacionalidad(models.Model):
 class NivelEducacion(models.Model): 
     nombre = models.CharField(max_length=255) 
     descripcion = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     
     class Meta:
         db_table = 'niveleducacion'
@@ -71,7 +71,7 @@ class NivelEducacion(models.Model):
 class Ocupacion(models.Model): 
     nombre = models.CharField(max_length=255) 
     descripcion = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     
     class Meta:
         db_table = 'ocupacion'
@@ -85,8 +85,8 @@ class PreDenuncia(models.Model):
     generodenunciante = models.CharField(max_length=1) 
     descripcioninvestigacion = models.CharField(max_length=255) 
     generodenunciado = models.CharField(max_length=1) 
-    funcionariopublico = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    funcionariopublico = models.CharField(blank=True, max_length=255, default="") 
+    #id = models.IntegerField(primary_key=True) 
     niveleducaciondenunciante = models.ForeignKey( 
         NivelEducacion,  
         db_column='niveleducaciondenuncianteid',
@@ -117,7 +117,7 @@ class PreDenuncia(models.Model):
 
 class Provincia(models.Model): 
     nombre = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     
     class Meta:
         db_table = 'provincia'
@@ -129,7 +129,7 @@ class Provincia(models.Model):
 class Region(models.Model): 
     nombre = models.CharField(max_length=255) 
     descripcion = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     
     class Meta:
         db_table = 'region'
@@ -140,7 +140,7 @@ class Region(models.Model):
 
 class Ciudad(models.Model): 
     nombre = models.CharField(max_length=255) 
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     provincia = models.ForeignKey( 
         Provincia,  
         db_column='provinciaid',  
@@ -157,16 +157,16 @@ class Reclamo(models.Model):
     nombresapellidosdenunciante = models.CharField(max_length=255)
     tipoidentificacion = models.CharField(max_length=255)
     numidenti = models.CharField(max_length=255) 
-    direccion = models.CharField(max_length=255) 
+    direccion = models.CharField(max_length=255, blank=True) 
     email = models.CharField(max_length=255) 
     nombresapellidosdenunciado = models.CharField(max_length=255) 
-    telefono = models.CharField(max_length=255)
-    cargo = models.CharField(max_length=255)
+    telefono = models.CharField(max_length=255, blank=True)
+    cargo = models.CharField(max_length=255, blank=True)
     comparecer = models.BooleanField(default=False) 
     documentores = models.BooleanField(default=False)
     identidadreservada = models.BooleanField(default=False)
     resideextrangero = models.BooleanField(default=False)
-    id = models.IntegerField(primary_key=True) 
+    #id = models.IntegerField(primary_key=True) 
     ciudaddeldenunciante = models.ForeignKey( 
         Ciudad,
 		db_column='ciudaddeldenuncianteid',

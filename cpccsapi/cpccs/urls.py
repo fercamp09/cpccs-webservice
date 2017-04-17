@@ -41,5 +41,5 @@ urlpatterns = [
         name=views.UsuarioList.name), 
     url(r'^$', 
         views.ApiRoot.as_view(), 
-        name=views.ApiRoot.name), 
+        name=views.ApiRoot.name),  
 ] 

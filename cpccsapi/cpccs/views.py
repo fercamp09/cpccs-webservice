@@ -30,6 +30,10 @@ from rest_framework.reverse import reverse
 
 from rest_framework import filters 
 from django_filters import NumberFilter, DateTimeFilter, AllValuesFilter 
+from rest_framework import permissions
+
+from django.core.mail import send_mail
+
 # Create your views here. 
  
 class SectorList(generics.ListAPIView): 
@@ -77,6 +81,7 @@ class PreDenunciaList(generics.ListCreateAPIView):
     queryset = PreDenuncia.objects.all() 
     serializer_class = PreDenunciaSerializer 
     name = 'predenuncia-list' 
+    permission_classes = (permissions.IsAuthenticated,)
 
 class ProvinciaList(generics.ListAPIView): 
     queryset = Provincia.objects.all() 
@@ -86,7 +91,16 @@ class ProvinciaList(generics.ListAPIView):
 class ReclamoList(generics.ListCreateAPIView): 
     queryset = Reclamo.objects.all() 
     serializer_class = ReclamoSerializer 
-    name = 'reclamo-list' 	
+    name = 'reclamo-list'
+    permission_classes = (permissions.IsAuthenticated,)
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        send_mail('Confirmación Envio De Formulario',
+		'<h1>Envio Exitoso</h1> <p>Sr(a) ' + instance.nombresapellidosdenunciante + ' su Peticion ha sido Enviada Correctamente</p><h3>Petición :' + 'descripcion' + '</h3>',
+		'prueba.envio.formulario@gmail.com',
+		[instance.email],
+		fail_silently=False,
+		html_message='<h1>Envio Exitoso</h1> <p>Sr(a) ' + instance.nombresapellidosdenunciante + ' su Peticion ha sido Enviada Correctamente</p><h3>Petición :' + 'descripcion' + '</h3>')
 
 class RegionList(generics.ListAPIView): 
     queryset = Region.objects.all() 

@@ -23,10 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+sx1%al*!4@^f6pbeo_a1ygw@zl9m3ui*8kd=_b9orfgk0s8)f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+#DEBUG = True
 
 ALLOWED_HOSTS = [
-	
+    '.6v3gjmadmw.sa-east-1.elasticbeanstalk.com'
 ]
 
 
@@ -152,5 +153,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ( 
         'rest_framework.authentication.BasicAuthentication', 
         'rest_framework.authentication.SessionAuthentication', 
-        ) 		
+        ),	
+    #'DEFAULT_PERMISSION_CLASSES': (
+    #    'rest_framework.permissions.IsAuthenticated',
+    #)
 } 
