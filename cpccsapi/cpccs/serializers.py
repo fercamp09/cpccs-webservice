@@ -92,7 +92,7 @@ class PreDenunciaSerializer(serializers.ModelSerializer):
     genero_denunciante = serializers.CharField(source='generodenunciante')
     descripcion_investigacion = serializers.CharField(source='descripcioninvestigacion')
     genero_denunciado = serializers.CharField(source='generodenunciado')
-    funcionario_publico = serializers.CharField(source='funcionariopublico')
+    funcionario_publico = serializers.CharField(source='funcionariopublico', allow_blank=True)
     nivel_educacion_denunciante = serializers.PrimaryKeyRelatedField(source='niveleducaciondenunciante', queryset=NivelEducacion.objects.all())
     ocupacion_denunciante = serializers.PrimaryKeyRelatedField(source='ocupaciondenunciante', queryset=Ocupacion.objects.all())
     nacionalidad_denunciante = serializers.PrimaryKeyRelatedField(source='nacionalidaddenunciante', queryset=Nacionalidad.objects.all())

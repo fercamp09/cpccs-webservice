@@ -33,10 +33,10 @@ class Institucion(models.Model):
     representante = models.CharField(max_length=255) 
     competencia = models.CharField(max_length=255) 
     #id = models.IntegerField(primary_key=True) 
-    sector = models.ForeignKey( 
-        Sector,
-        db_column='sectorid',
-        on_delete=models.CASCADE) 
+    #sector = models.ForeignKey( 
+    #    Sector,
+    #    db_column='sectorid',
+    #    on_delete=models.CASCADE) 
     
     class Meta:
         db_table = 'institucion'
@@ -85,7 +85,7 @@ class PreDenuncia(models.Model):
     generodenunciante = models.CharField(max_length=1) 
     descripcioninvestigacion = models.CharField(max_length=255) 
     generodenunciado = models.CharField(max_length=1) 
-    funcionariopublico = models.CharField(blank=True, max_length=255, default="") 
+    funcionariopublico = models.CharField(max_length=255, blank=True, default='') 
     #id = models.IntegerField(primary_key=True) 
     niveleducaciondenunciante = models.ForeignKey( 
         NivelEducacion,  
@@ -141,10 +141,10 @@ class Region(models.Model):
 class Ciudad(models.Model): 
     nombre = models.CharField(max_length=255) 
     #id = models.IntegerField(primary_key=True) 
-    provincia = models.ForeignKey( 
-        Provincia,  
-        db_column='provinciaid',  
-        on_delete=models.CASCADE) 
+    #provincia = models.ForeignKey( 
+    #    Provincia,  
+    #    db_column='provinciaid',  
+    #    on_delete=models.CASCADE) 
    
     class Meta:
         db_table = 'ciudad'
@@ -157,11 +157,11 @@ class Reclamo(models.Model):
     nombresapellidosdenunciante = models.CharField(max_length=255)
     tipoidentificacion = models.CharField(max_length=255)
     numidenti = models.CharField(max_length=255) 
-    direccion = models.CharField(max_length=255, blank=True) 
+    direccion = models.CharField(max_length=255, blank=True, default='') 
     email = models.CharField(max_length=255) 
     nombresapellidosdenunciado = models.CharField(max_length=255) 
-    telefono = models.CharField(max_length=255, blank=True)
-    cargo = models.CharField(max_length=255, blank=True)
+    telefono = models.CharField(max_length=255, blank=True, default='')
+    cargo = models.CharField(max_length=255, blank=True, default='')
     comparecer = models.BooleanField(default=False) 
     documentores = models.BooleanField(default=False)
     identidadreservada = models.BooleanField(default=False)
