@@ -33,10 +33,10 @@ class Institucion(models.Model):
     representante = models.CharField(max_length=255) 
     competencia = models.CharField(max_length=255) 
     #id = models.IntegerField(primary_key=True) 
-    #sector = models.ForeignKey( 
-    #    Sector,
-    #    db_column='sectorid',
-    #    on_delete=models.CASCADE) 
+    sector = models.ForeignKey( 
+        Sector,
+        db_column='sectorid',
+        on_delete=models.CASCADE) 
     
     class Meta:
         db_table = 'institucion'
@@ -141,10 +141,10 @@ class Region(models.Model):
 class Ciudad(models.Model): 
     nombre = models.CharField(max_length=255) 
     #id = models.IntegerField(primary_key=True) 
-    #provincia = models.ForeignKey( 
-    #    Provincia,  
-    #    db_column='provinciaid',  
-    #    on_delete=models.CASCADE) 
+    provincia = models.ForeignKey( 
+        Provincia,  
+        db_column='provinciaid',  
+        on_delete=models.CASCADE) 
    
     class Meta:
         db_table = 'ciudad'

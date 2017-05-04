@@ -99,14 +99,13 @@ class ReclamoList(generics.ListCreateAPIView):
             tipo = self.request.data['tipo']
             if tipo == '0':
                 accion = 'Denuncia'
-            elif tipo == '1':
+            else:
                 accion = 'Petición'
         except KeyError:
             descripcion = ''
             accion = 'Petición'
         instance = serializer.save()
-        send_mail('<h1>Envio Exitoso</h1> <p>Sr(a) ' + instance.nombresapellidosdenunciante + ' su '+ accion + ' ha sido Enviada Correctamente</p><h3>'+ accion + ': ' + descripcion + '</h3>', 'prueba.envio.formulario@gmail.com', [instance.email],
-        fail_silently=False, html_message='<h1>Envio Exitoso</h1> <p>Sr(a) ' + instance.nombresapellidosdenunciante + ' su '+ accion + ' ha sido Enviada Correctamente</p><h3>'+ accion + ': ' + descripcion + '</h3>')
+        send_mail( 'Confirmaciòn Envio De Formulario','<h1>Envio Exitoso</h1> <p> Sr(a)' + instance.nombresapellidosdenunciante + ' su ' + accion + ' ha sido enviada correctamente </p> <h3>' + accion + ': ' + descripcion + '</h3>', 'prueba.envio.formulario@gmail.com', [instance.email], fail_silently = False, html_message = '<h1> Envio Exitoso </h1> <p> Sr(a) ' + instance.nombresapellidosdenunciante + ' su ' + accion + ' ha sido enviada correctamente </p><h3>'+ accion + ': ' + descripcion + '</h3>')
 
 class RegionList(generics.ListAPIView): 
     queryset = Region.objects.all() 
