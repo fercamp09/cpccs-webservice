@@ -1,4 +1,4 @@
-Django==1.11.21
+Django==1.11.29
 django-crispy-forms==1.6.1
 django-filter==1.0.2
 djangorestframework==3.9.1
